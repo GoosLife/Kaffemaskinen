@@ -38,9 +38,9 @@ void CoffeeMachine::ChangeFilter(std::unique_ptr<Filter> newFilter)
 	{
 		if (*it == _filter)
 		{
+			_filter = std::move(newFilter);
 			delete _filter;
 			*it = std::move(newFilter);
-			_filter = std::move(newFilter);
 			filterExists = true;
 			break;
 		}
