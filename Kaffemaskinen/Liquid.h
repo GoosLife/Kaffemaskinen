@@ -5,6 +5,6 @@
 class Liquid : public Ingredient
 {
 public:
-	Liquid(std::string name) : Ingredient(name) {}
+	Liquid(std::string name = "Liquid") : Ingredient(name) {}
 	~Liquid() {}
 };

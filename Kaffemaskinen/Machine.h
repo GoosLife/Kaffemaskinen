@@ -6,11 +6,11 @@ class Machine
 {
 public:
 	~Machine() {
-		for (auto part : _parts)
-		{
-			delete(part);
-		}
-		_parts.clear();
+		//for (auto part : _parts)
+		//{
+		//	delete(part);
+		//}
+		//_parts.clear();
 	}
 
 protected:

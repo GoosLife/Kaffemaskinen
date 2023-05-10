@@ -3,6 +3,7 @@
 class CoffeeBean :
     public Ingredient
 {
+public:
     CoffeeBean() : Ingredient("coffee bean") {}
 };
 

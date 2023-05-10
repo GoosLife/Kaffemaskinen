@@ -6,19 +6,24 @@
 #include <vector>
 
 template <typename T, typename U>
-class Dispenser : public Part, public IDispense<T>
+class Dispenser : public Part, public IDispense<T, U>
 {
 public:
 	Dispenser() {}
 	~Dispenser() {}
 
-	virtual void dispense(std::vector<Container<U>>& containers)
+	virtual void dispense(std::vector<PhysicalContainer<U>>& containers) override
 	{
-		for (auto container in containers)
+		for (auto& container : containers)
 		{
-			container->addIngredient(T);
+			T t;
+			container.addIngredient(t);
 		}
 	}
 
-	T 
+	virtual void dispense(PhysicalContainer<U>& container) override
+	{
+		T t;
+		container.addIngredient(t);
+	}
 };

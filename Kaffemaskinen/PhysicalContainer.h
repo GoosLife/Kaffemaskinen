@@ -11,7 +11,7 @@ class PhysicalContainer : public Part {
 public:
 	PhysicalContainer(int maxCapacity) : _maxCapacity(maxCapacity) {}
 
-	bool hasIngredient() { return ingredients.size() > 0 }
+	bool hasIngredient() { return ingredients.size() > 0; }
 
 	void addIngredient(T ingredient) {
 		if (ingredients.size() < _maxCapacity) {
@@ -39,6 +39,8 @@ public:
 			// Reject remaining ingredients
 		}
 	}
+
+	std::string getIngredientName() { return ingredients.back().getName(); }
 
 private:
 	std::vector<T> ingredients;
