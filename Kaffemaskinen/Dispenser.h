@@ -1,15 +1,24 @@
 #pragma once
 
 #include "Part.h"
+#include "IDispense.h"
 
 #include <vector>
 
-class Dispenser
+template <typename T, typename U>
+class Dispenser : public Part, public IDispense<T>
 {
 public:
-	Dispenser();
-	~Dispenser();
+	Dispenser() {}
+	~Dispenser() {}
 
-private:
-	std::vector<Part*> parts;
+	virtual void dispense(std::vector<Container<U>>& containers)
+	{
+		for (auto container in containers)
+		{
+			container->addIngredient(T);
+		}
+	}
+
+	T 
 };
