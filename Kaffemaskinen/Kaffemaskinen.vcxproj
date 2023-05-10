@@ -127,7 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Dispenser.cpp" />
     <ClCompile Include="Kaffemaskinen.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Container.h" />
+    <ClInclude Include="Dispenser.h" />
+    <ClInclude Include="IDispense.h" />
+    <ClInclude Include="Ingredient.h" />
+    <ClInclude Include="Liquid.h" />
+    <ClInclude Include="Part.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
