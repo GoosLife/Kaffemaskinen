@@ -63,31 +63,6 @@ void CoffeeMachine::AddWater(std::vector<Water> water)
 	_waterContainer->addIngredient(water);
 }
 
-template <typename T, typename Enable>
-void CoffeeMachine::FillCoffeeFilter(std::vector<T>& coffeeBeans)
-{
-	_filter->addIngredient(coffeeBeans);
-}
-
-template <typename T>
-void CoffeeMachine::FillCoffeeFilter(T ingredient) {
-	if constexpr (std::is_same_v<T, std::vector<typename T::value_type, typename T::allocator_type>>) {
-		for (int i = 0; i < ingredient.size(); i++) {
-			_filter->addIngredient(ingredient[i]);
-		}
-	}
-	else {
-		_filter->addIngredient(ingredient);
-	}
-}
-
-template <typename T>
-void CoffeeMachine::FillCoffeeFilter(std::vector<T> ingredients) {
-	for (int i = 0; i < ingredients.size(); i++) {
-		_filter->addIngredient(ingredients[i]);
-	}
-}
-
 void CoffeeMachine::BrewCoffee(std::vector<PhysicalContainer<Liquid>>& cups)
 {
 	if (_filter != nullptr) {

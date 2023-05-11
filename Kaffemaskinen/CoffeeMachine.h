@@ -27,14 +27,19 @@ public:
 	void AddWater(std::vector<Water> water);
 
 	template <typename T, typename std::enable_if<std::is_base_of<OutputIngredient<Ingredient>, T>::value, int>::type = 0>
-	void FillCoffeeFilter(T ingredient) {
-		_filter->addIngredient(ingredient)
+	void FillCoffeeFilter(const T& ingredient) {
+		_filter->addIngredient(ingredient);
 	}
 
+	template <typename T, typename std::enable_if<std::is_base_of<OutputIngredient<Ingredient>, T>::value, int>::type = 0>
 	void FillCoffeeFilter(std::vector<T> ingredients) {
 		for (auto& ingredient : ingredients) {
 			_filter->addIngredient(ingredient);
 		}
+	}
+
+	void FillCoffeeFilter(const Ingredient& ingredient) {
+		_filter->addIngredient(ingredient);
 	}
 
 	// This could be on a "StartButton" part or similar, but for now, we will just use the interface like this
