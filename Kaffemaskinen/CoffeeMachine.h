@@ -2,6 +2,7 @@
 #include "Dispenser.h"
 #include "Coffee.h"
 #include "CoffeeBean.h"
+#include "OutputIngredient.h"
 #include "Filter.h"
 #include "Machine.h"
 #include "Water.h"
