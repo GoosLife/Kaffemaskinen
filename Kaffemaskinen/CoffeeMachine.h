@@ -22,10 +22,14 @@ public:
 	// Notice how these two overloaded functions are identical to the ones in container, so we can add one or more water, and one or more beans at the same time by calling the same function throughout.
 
 	void AddWater(Water water);
-	void FillCoffeeFilter(CoffeeBean coffeeBean);
+
+	template <typename T>
+	void FillCoffeeFilter(OutputIngredient<T>& coffeeBean);
 
 	void AddWater(std::vector<Water> water);
-	void FillCoffeeFilter(std::vector<CoffeeBean> coffeeBeans);
+
+	template <typename T>
+	void FillCoffeeFilter(std::vector<OutputIngredient<T>>& coffeeBeans);
 
 	// This could be on a "StartButton" part or similar, but for now, we will just use the interface like this
 
@@ -33,7 +37,7 @@ public:
 	void BrewCoffee(PhysicalContainer<Liquid>& cup);
 	
 private:
-	Dispenser<Coffee, Liquid>* _coffeeDispenser;
+	Dispenser<Liquid>* _coffeeDispenser;
 	Filter* _filter;
 	WaterContainer* _waterContainer;
 };

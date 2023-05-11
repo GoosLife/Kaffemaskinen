@@ -1,8 +1,13 @@
 #include "CoffeeMachine.h"
 
+#include "OutputIngredient.h"
+
+#include <iostream>
+#include <typeinfo>
+
 CoffeeMachine::CoffeeMachine()
 {
-	Dispenser<Coffee, Liquid>* coffeeDispenser = new Dispenser<Coffee, Liquid>();
+	Dispenser<Liquid>* coffeeDispenser = new Dispenser<Liquid>();
 	Filter* filter = new Filter(50); // The coffee machine comes with a brand new filter that can hold up to 50 coffee beans!
 	WaterContainer* waterContainer = new WaterContainer(500);
 
@@ -45,7 +50,8 @@ void CoffeeMachine::AddWater(Water water)
 	_waterContainer->addIngredient(water);
 }
 
-void CoffeeMachine::FillCoffeeFilter(CoffeeBean coffeeBean)
+template <typename T>
+void CoffeeMachine::FillCoffeeFilter(OutputIngredient<T>& coffeeBean)
 {
 	_filter->addIngredient(coffeeBean);
 }
@@ -55,17 +61,32 @@ void CoffeeMachine::AddWater(std::vector<Water> water)
 	_waterContainer->addIngredient(water);
 }
 
-void CoffeeMachine::FillCoffeeFilter(std::vector<CoffeeBean> coffeeBeans)
+template <typename T>
+void CoffeeMachine::FillCoffeeFilter(std::vector<OutputIngredient<T>>& coffeeBeans)
 {
 	_filter->addIngredient(coffeeBeans);
 }
 
 void CoffeeMachine::BrewCoffee(std::vector<PhysicalContainer<Liquid>>& cups)
 {
-	_coffeeDispenser->dispense(cups);
+	if (_filter != nullptr) {
+		try {
+			_coffeeDispenser->dispense(cups, _filter->getIngredient());
+		}
+		catch (std::exception e) {
+			// Tell user filter is empty
+		}
+	}
 }
 
 void CoffeeMachine::BrewCoffee(PhysicalContainer<Liquid>& cup)
 {
-	_coffeeDispenser->dispense(cup);
+	if (_filter != nullptr) {
+		try {
+			_coffeeDispenser->dispense(cup, _filter->getIngredient());
+		}
+		catch (std::exception e) {
+			// Tell user filter is empty
+		}
+	}
 }

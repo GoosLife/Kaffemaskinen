@@ -1,9 +1,16 @@
 #pragma once
-#include "Ingredient.h"
+#include "OutputIngredient.h"
+#include "Coffee.h"
+
 class CoffeeBean :
-    public Ingredient
+    public OutputIngredient<Coffee>
 {
 public:
-    CoffeeBean() : Ingredient("coffee bean") {}
+    CoffeeBean() : OutputIngredient("coffee bean") {}
+    
+
+    // Inherited via OutputIngredient
+    virtual Coffee brew() override;
+
 };
 

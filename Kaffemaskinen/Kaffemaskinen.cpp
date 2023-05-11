@@ -4,6 +4,7 @@
 #include "Cup.h"
 #include "CoffeeBean.h"
 #include "Coffee.h"
+#include "OutputIngredient.h"
 #include "Water.h"
 
 int main()

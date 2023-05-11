@@ -41,6 +41,7 @@ public:
 	}
 
 	std::string getIngredientName() { return ingredients.back().getName(); }
+	T& getIngredient() { return ingredients.back(); }
 
 private:
 	std::vector<T> ingredients;

@@ -5,25 +5,25 @@
 
 #include <vector>
 
-template <typename T, typename U>
-class Dispenser : public Part, public IDispense<T, U>
+template <typename U>
+class Dispenser : public Part, public IDispense<U>
 {
 public:
 	Dispenser() {}
 	~Dispenser() {}
 
-	virtual void dispense(std::vector<PhysicalContainer<U>>& containers) override
+	virtual void dispense(std::vector<PhysicalContainer<U>>& containers, OutputIngredient<Ingredient>& ingredient) override
 	{
 		for (auto& container : containers)
 		{
-			T t;
-			container.addIngredient(t);
+			auto output = ingredient.brew();
+			container.addIngredient(output);
 		}
 	}
 
-	virtual void dispense(PhysicalContainer<U>& container) override
+	virtual void dispense(PhysicalContainer<U>& container, OutputIngredient<Ingredient>& ingredient) override
 	{
-		T t;
-		container.addIngredient(t);
+		auto output = ingredient.brew();
+		container.addIngredient(output);
 	}
 };

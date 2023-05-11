@@ -1,12 +1,12 @@
 #pragma once
 #include "PhysicalContainer.h"
-#include "CoffeeBean.h"
+#include "OutputIngredient.h"
 
 class Filter :
-    public PhysicalContainer<CoffeeBean>
+    public PhysicalContainer<OutputIngredient<Ingredient>>
 {
 public:
-    Filter(int maxCapacity) : PhysicalContainer<CoffeeBean>(maxCapacity) {}
+    Filter(int maxCapacity) : PhysicalContainer<OutputIngredient<Ingredient>>(maxCapacity) {}
 	~Filter() {}
 };
 
