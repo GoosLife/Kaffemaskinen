@@ -4,6 +4,7 @@
 #include "Ingredient.h"
 
 #include <vector>
+#include <type_traits>
 
 template<typename T>
 class PhysicalContainer : public Part {
@@ -37,6 +38,18 @@ public:
 		if (amountLeft > 0)
 		{
 			// Reject remaining ingredients
+		}
+	}
+
+	template <typename U>
+	void addIngredient(U ingredient) {
+		// Check if U is the same type as the value_type of _ingredients
+		if constexpr (std::is_same_v<U, typename std::vector<T>::value_type>) {
+			ingredients.push_back(ingredient);
+		}
+		else {
+			// U is not the same type as the value_type of _ingredients
+			// Handle the error here
 		}
 	}
 

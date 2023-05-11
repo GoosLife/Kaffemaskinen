@@ -4,6 +4,7 @@
 class Ingredient
 {
 public:
+	using value_type = Ingredient;
 	~Ingredient() {}
 	virtual std::string getName() const { return _name; }
 protected:

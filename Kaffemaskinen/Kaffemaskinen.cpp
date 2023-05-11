@@ -56,6 +56,7 @@ int main()
     for (int i = 0; i < 50; i++) {
         TeaLeaf t;
         teaBag.push_back(t);
+        teaMachine.FillCoffeeFilter(t);
     }
 
     teaMachine.AddWater(waterSource);
