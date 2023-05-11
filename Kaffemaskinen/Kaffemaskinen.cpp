@@ -28,7 +28,7 @@ int main()
     }
 
     c.AddWater(waterSource); // Add up to 100 water to the water container
-    c.FillCoffeeFilter<CoffeeBean>(beanBag); // Fill the filter with up to 50 coffee beans
+    c.FillCoffeeFilter(beanBag); // Fill the filter with up to 50 coffee beans
 
     std::vector<PhysicalContainer<Liquid>> allOurCups;
 
