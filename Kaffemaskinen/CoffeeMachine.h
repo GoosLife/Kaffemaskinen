@@ -24,13 +24,13 @@ public:
 
 	void AddWater(Water water);
 
-	template <typename T>
-	void FillCoffeeFilter(OutputIngredient<T>& coffeeBean);
+	template <typename T, typename Enable = std::enable_if_t<std::is_base_of_v<OutputIngredient<Ingredient>, T>>>
+	void FillCoffeeFilter(T& coffeeBean);
 
 	void AddWater(std::vector<Water> water);
 
-	template <typename T>
-	void FillCoffeeFilter(std::vector<OutputIngredient<T>>& coffeeBeans);
+	template <typename T, typename Enable = std::enable_if_t<std::is_base_of_v<OutputIngredient<Ingredient>, T>>>
+	void FillCoffeeFilter(std::vector<T>& coffeeBeans);
 
 	// This could be on a "StartButton" part or similar, but for now, we will just use the interface like this
 

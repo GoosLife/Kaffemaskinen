@@ -1,5 +1,6 @@
 #include "CoffeeMachine.h"
-
+#include "TeaLeaf.h"
+#include "CoffeeBean.h"
 #include "OutputIngredient.h"
 
 #include <iostream>
@@ -50,8 +51,8 @@ void CoffeeMachine::AddWater(Water water)
 	_waterContainer->addIngredient(water);
 }
 
-template <typename T>
-void CoffeeMachine::FillCoffeeFilter(OutputIngredient<T>& coffeeBean)
+template <typename T, typename Enable>
+void CoffeeMachine::FillCoffeeFilter(T& coffeeBean)
 {
 	_filter->addIngredient(coffeeBean);
 }
@@ -61,8 +62,8 @@ void CoffeeMachine::AddWater(std::vector<Water> water)
 	_waterContainer->addIngredient(water);
 }
 
-template <typename T>
-void CoffeeMachine::FillCoffeeFilter(std::vector<OutputIngredient<T>>& coffeeBeans)
+template <typename T, typename Enable>
+void CoffeeMachine::FillCoffeeFilter(std::vector<T>& coffeeBeans)
 {
 	_filter->addIngredient(coffeeBeans);
 }
